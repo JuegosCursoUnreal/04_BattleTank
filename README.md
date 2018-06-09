@@ -20,3 +20,6 @@ You're welcome to download, fork or do whatever else legal with all the files! Y
 
 ## Lista de lecciones
 ### 1 Intro, Notes & Section 4 Assets ###
+### 2 Battle tank Overview ###
+### 3 S04 Game Design Document (GDD) ###
+### 4 Setting up a GitHub "Repo" ###

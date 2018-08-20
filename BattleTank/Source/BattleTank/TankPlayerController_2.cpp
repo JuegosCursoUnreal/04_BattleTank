@@ -3,9 +3,22 @@
 
 #include "TankPlayerController_2.h"
 
-ATank* ATankPlayerController_2::GetControlledTank() const
+void ATankPlayerController_2::BeginPlay() 
 {
-	return Cast<ATank>(GetPawn());
+	Super::BeginPlay();
+	UE_LOG(LogTemp, Warning, TEXT("Player Controller Begin Play"));
+	auto TanquePoseido = GetControlledTank()->GetName();
+	if (GetPawn())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Pawn Obtenido %s"), *TanquePoseido);
+	}
+	else
+		UE_LOG(LogTemp, Warning, TEXT("Pawn NO Obtenido"));
+}
+
+ATank* ATankPlayerController_2::GetControlledTank() const
+{	
+	return Cast<ATank>(GetPawn());	
 }
 
 

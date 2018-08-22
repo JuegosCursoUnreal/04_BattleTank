@@ -10,10 +10,10 @@ void ATankPlayerController_2::BeginPlay()
 	auto TanquePoseido = GetControlledTank()->GetName();
 	if (GetPawn())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Pawn Obtenido %s"), *TanquePoseido);
+		UE_LOG(LogTemp, Warning, TEXT("Player Pawn Obtenido: %s"), *TanquePoseido);
 	}
 	else
-		UE_LOG(LogTemp, Warning, TEXT("Pawn NO Obtenido"));
+		UE_LOG(LogTemp, Warning, TEXT("Player Pawn NO Obtenido"));
 }
 
 ATank* ATankPlayerController_2::GetControlledTank() const

@@ -4,14 +4,23 @@
 
 void ATankAIController::BeginPlay()
 {
-	Super::BeginPlay();
-	auto TanquePoseido = GetControlledTank()->GetName();
-	if (GetPawn())
+	Super::BeginPlay();	
+	
+	if (GetPlayerTank() && GetPawn())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AI Pawn Obtenido: %s"), *TanquePoseido);
+		auto TanquePoseido = GetControlledTank()->GetName();
+		auto TanqueJugador = GetPlayerTank()->GetName();
+		UE_LOG(LogTemp, Warning, TEXT("AI %s encontro al jugador: %s"), *TanquePoseido, *TanqueJugador);
 	}
 	else
-		UE_LOG(LogTemp, Warning, TEXT("AI Pawn NO Obtenido"));
+		UE_LOG(LogTemp, Warning, TEXT("AI no encontro al jugador o AI Pawn NO Obtenido"));
+}
+
+ATank* ATankAIController::GetPlayerTank() const
+{
+	APawn* PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (!PlayerPawn) { return nullptr; } else
+	return Cast<ATank>(PlayerPawn);
 }
 
 ATank* ATankAIController::GetControlledTank() const

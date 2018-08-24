@@ -18,5 +18,9 @@ class BATTLETANK_API ATankPlayerController_2 : public APlayerController
 private:
 	ATank* GetControlledTank() const;
 	virtual void BeginPlay() override;
-	
+	virtual void Tick(float DeltaTime) override;
+
+	//función encargada de apuntar el cañon del tanque hacia donde apunte el crosshair
+	void AimTowardsCrosshair();
+
 };

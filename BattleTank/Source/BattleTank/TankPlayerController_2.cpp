@@ -16,9 +16,23 @@ void ATankPlayerController_2::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("Player Pawn NO Obtenido"));
 }
 
+void ATankPlayerController_2::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();	
+}
+
 ATank* ATankPlayerController_2::GetControlledTank() const
 {	
 	return Cast<ATank>(GetPawn());	
+}
+
+void ATankPlayerController_2::AimTowardsCrosshair()
+{
+	if (!GetControlledTank) { return; }
+	//Obtener la localización del mundo donde el linetrace atraviese la crosshair e intersecte con el mundo
+		// Si golpea al mundo
+		// Decirle al tanque que apunte a ese punto.
 }
 
 

@@ -33,7 +33,7 @@ void ATankPlayerController_2::AimTowardsCrosshair()
 	FVector HitLocation = { 0,0,0 };
 	if(GetSightRayHitLocation(HitLocation))	
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *HitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *HitLocation.ToString());
 		//TODO Decirle al tanque que apunte a ese punto.
 	}
 }
@@ -47,9 +47,24 @@ bool ATankPlayerController_2::GetSightRayHitLocation(FVector &OutHitLocation) co
 		ViewportSizeX*CrossHairXLocation , 
 		ViewportSizeY*CrossHairYLocation 
 	};
-	//UE_LOG(LogTemp, Warning, TEXT("ScreenLocation: %s"), *ScreenLocation.ToString());
-	//"De-proyectar" la posición de la mira en la pantalla a una posición en el mundo
+	FVector WorldDirection = { 0,0,0 };
+	if (GetLookDirection(ScreenLocation, WorldDirection)) 
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *WorldDirection.ToString());
+	}
+	
 	// Line-trace a lo largo de esa dirección y ver que golpeamos (al maximo rango)
 	return true;
+}
+bool ATankPlayerController_2::GetLookDirection(FVector2D &ScreenLocation, FVector &WorldDirection) const
+{
+	FVector WorldLocation = { 0,0,0 }; //deberá ser descartado
+	//"De-proyectar" la posición de la mira en la pantalla a una posición en el mundo
+	return DeprojectScreenPositionToWorld(
+		ScreenLocation.X,
+		ScreenLocation.Y,
+		WorldLocation,
+		WorldDirection
+	);	
 }
 

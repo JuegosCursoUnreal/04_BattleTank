@@ -23,4 +23,6 @@ private:
 	//función encargada de apuntar el cañon del tanque hacia donde apunte el crosshair
 	void AimTowardsCrosshair();
 
+	bool GetSightRayHitLocation(FVector&) const;
+
 };

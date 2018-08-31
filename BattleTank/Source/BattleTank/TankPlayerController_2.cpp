@@ -29,10 +29,17 @@ ATank* ATankPlayerController_2::GetControlledTank() const
 
 void ATankPlayerController_2::AimTowardsCrosshair()
 {
-	if (!GetControlledTank) { return; }
-	//Obtener la localización del mundo donde el linetrace atraviese la crosshair e intersecte con el mundo
-		// Si golpea al mundo
-		// Decirle al tanque que apunte a ese punto.
+	if (!GetControlledTank()) { return; }
+	FVector HitLocation = { 0,0,0 };
+	if(GetSightRayHitLocation(HitLocation))	
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		//TODO Decirle al tanque que apunte a ese punto.
+	}
 }
-
+//Obtener la localización del mundo donde el linetrace atraviese la crosshair e intersecte con el mundo
+bool ATankPlayerController_2::GetSightRayHitLocation(FVector &OutHitLocation) const
+{	
+	return true;
+}
 

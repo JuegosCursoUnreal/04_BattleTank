@@ -28,4 +28,8 @@ ATank* ATankAIController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 }
 
+void ATankAIController::Tick(float DeltaTime)
+{
+	GetControlledTank()->AimAt(GetPlayerTank()->GetTargetLocation());
+}
 

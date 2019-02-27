@@ -16,7 +16,7 @@
 * Background music.
 * Images and UI/UX elements for the main menu.    
 
-You're welcome to download, fork or do whatever else legal with all the files! You can check out the course here: [Unreal Engine Developer]( http://gdev.tv/urcgithub)
+You're welcome to download, fork or do whatever else legal with all the files!
 
 ## Lista de lecciones
 ### 1 Intro, Notes & Section 4 Assets ###
